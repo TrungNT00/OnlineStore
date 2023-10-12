@@ -1,0 +1,116 @@
+<?php
+if(!empty($_SERVER['argv'][1])){
+
+    // Tạo Controller
+    if($_SERVER['argv'][1] == 'make:controller'){
+        if(!empty($_SERVER['argv'][2])){
+            // Get controller Name
+            $controllerName = $_SERVER['argv'][2];
+            
+            // check Controller exist
+            if(!file_exists('app/controllers/' . $controllerName . '.php')){
+                
+                $data = file_get_contents('core/console/controller.tpl');
+                $data = str_replace('{controllerName}', $controllerName, $data);
+
+                file_put_contents('app/controllers/'. $controllerName. '.php', $data);
+                echo "\033[32mTạo Controller $controllerName thành công. \033[0m\n";
+            } else {
+                echo "\033[33mController da ton tai \033[0m\n";
+            }
+        }
+    }
+
+    // Xóa Controller
+    if(!empty($_SERVER['argv'][1])){
+        if($_SERVER['argv'][1] == 'delete:controller'){
+            if(!empty($_SERVER['argv'][2])){
+                $controllerName = $_SERVER['argv'][2];
+                if(file_exists('app/controllers/' . $controllerName . '.php')){
+                    
+                    unlink('app/controllers/' . $controllerName . '.php');
+                    echo "\033[32mXóa Controller $controllerName thành công. \033[0m\n";
+
+                } else{
+                    echo "\033[33mController không tồn tại \033[0m\n";
+                }
+            }
+        }
+    }
+
+
+    // Tạo Model
+    if(!empty($_SERVER['argv'][1])){
+        if($_SERVER['argv'][1] == 'make:model'){
+            if(!empty($_SERVER['argv'][2])){
+                $modelName = $_SERVER['argv'][2];
+                if(!file_exists('app/models/' . $modelName . '.php')){
+
+                    $data = file_get_contents('core/console/model.tpl');
+                    $data = str_replace('{modelName}', $modelName, $data);
+
+                    file_put_contents('app/models/'. $modelName .'.php', $data);
+                    echo "\033[32mTạo model $modelName thành công. \033[0m\n";
+
+                } else {
+                    echo "\033[33mModel đã tồn tại. \033[0m\n";
+                }
+            }
+        }
+    }
+
+    // Xóa Model
+    if(!empty($_SERVER['argv'][1])){
+        if($_SERVER['argv'][1] == 'delete:model'){
+            if(!empty($_SERVER['argv'][2])){
+                $modelName = $_SERVER['argv'][2];
+                if(file_exists('app/models/' . $modelName . '.php')){
+                    
+                    unlink('app/models/' . $modelName . '.php');
+                    echo "\033[32mXóa model $modelName thành công. \033[0m\n";
+
+                } else{
+                    echo "\033[33mModel không tồn tại \033[0m\n";
+                }
+            }
+        }
+    }
+
+    
+    // Tạo middle ware
+    if(!empty($_SERVER['argv'][1])){
+        if($_SERVER['argv'][1] == 'make:middleware'){
+            if(!empty($_SERVER['argv'][2])){
+                $middlewareName = $_SERVER['argv'][2];
+                if(!file_exists('app/middlewares/' . $middlewareName . '.php')){
+
+                    $data = file_get_contents('core/console/middleware.tpl');
+                    $data = str_replace('{middlewareName}', $middlewareName, $data);
+
+                    file_put_contents('app/middlewares/'. $middlewareName .'.php', $data);
+                    echo "\033[32mTạo middleware $middlewareName thành công. \033[0m\n";
+
+                } else {
+                    echo "\033[33mMiddleware đã tồn tại. \033[0m\n";
+                }
+            }
+        }
+    }
+
+    // Xóa Middleware
+    if(!empty($_SERVER['argv'][1])){
+        if($_SERVER['argv'][1] == 'delete:middleware'){
+            if(!empty($_SERVER['argv'][2])){
+                $middlewareName = $_SERVER['argv'][2];
+                if(file_exists('app/middlewares/' . $middlewareName . '.php')){
+                    
+                    unlink('app/middlewares/' . $middlewareName . '.php');
+                    echo "\033[32mXóa middleware $middlewareName thành công. \033[0m\n";
+
+                } else{
+                    echo "\033[33mMiddleware không tồn tại \033[0m\n";
+                }
+            }
+        }
+    }
+}

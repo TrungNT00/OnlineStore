@@ -1,0 +1,51 @@
+Những chú ý:
+    load tự động : dùng scandir để liệt kê các file => dùng foreach => required_once
+
+Query builder:
+    1. where  : $this->db->where($field, $compare, $value)
+    2. orWhere : $this->db->orWhere($field, $compare, $value)
+    3. get : $this->db->get()
+    4. first : $this->db->first()
+    5. table : $this->db->table($name)
+    6. join : $this->db->join($tableName, $condition)
+    7. limit : $this->db->limit($offset, $number)       
+    8. insert : $this->db->table($name)->insert($data)
+    9. update : $this->db->table($name)->where($field, $compare, $value)->update($data)
+    10. delete : $this->db->table($name)->where($field, $compare, $value)->delete()
+    11. whereLike : $this->db->whereLike($field, $value)
+    12. select : $this->db->select($field)
+    13. orderBy : $this->db->orderBy($field,$type)
+    14. lastId : $this->db->lastId()
+
+    Request: GET và POST
+        Browser => Routes => Controller =>
+        + import Model
+        => views => Browser
+
+    Validate form
+        1. Set rules
+            fieldname
+            rules
+        2. Thông báo
+            fieldname
+            errors
+        3. Run Validate
+            true
+            false
+
+    middleware:
+        - Route middleware : bộ lọc theo route
+        - Route global : bộ lọc tất cả request
+
+    template
+        {{$title}} <=> <?php echo htmlentities($title) ?>
+        {!$title!} <=> <?php echo $title ?>
+
+    Cơ chế cache:
+        - client sẽ gửi Request đến Server không tốn thời gian
+        - Tiếp đến Server sẽ Parse Request, gửi truy vấn Database và lấy dữ liệu từ Database trả về
+        - Parse dữ liệu và trả về cho Browser 
+
+    hàm file_get_content() : lấy nội dung của file đó
+    hàm file_put_content($path,$data,$flag) : tạo file mới nếu file đó chưa tồn tại, ghi $data vào file đó
+    
